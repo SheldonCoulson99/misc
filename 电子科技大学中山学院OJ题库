@@ -1,3 +1,6 @@
+//按下Ctrl + F 进行题目编号查找
+//Press Ctrl + F to find solutions by problem numbers.
+
 Problem1000:
 #include <stdio.h>
 
