@@ -8678,6 +8678,602 @@ int main()
 
 }
 ------------------------------------------------------
+Problem1223:
+#include<iostream>
+
+using namespace std;
+
+int main()
+
+{
+
+	int M[105] = { 0 }, S[105] = { 0 }, J[105] = { 0 };
+
+	int n, m, s;
+
+	cin >> n;
+
+	cin >> m;
+
+	if (m >= 1 && m <= n)
+
+	{
+
+		for (int i = 0; i < m; i++)
+
+		{
+
+			cin >> M[i];
+
+			J[i] = M[i];
+
+		}
+
+	}
+
+	cin >> s;
+
+	if (s >= 1 && s <= n)
+
+	{
+
+		for (int i = 0; i < s; i++)
+
+		{
+
+			cin >> S[i];
+
+		}
+
+	}
+
+	for (int i = 0; i < m; i++)
+
+	{
+
+		for (int j = 0; j < s; j++)
+
+		{
+
+			if (M[i] == S[j])
+
+			{
+
+				cout << M[i] << ' ';
+
+			}
+
+		}
+
+	}
+
+	cout << endl;
+
+	int c = 0;
+
+	for (int j = 0; j < m; j++)
+
+	{
+
+		if (J[c] == M[j])
+
+		{
+
+			for (int k = 0; k < s; k++)
+
+			{
+
+
+
+				if (J[c] != S[k] && J[c] != 0)
+
+				{
+
+					cout << J[c] << ' ';
+
+					c++;
+
+				}
+
+				if (J[c]==S[k])
+
+				{
+
+					c++;
+
+				}
+
+			}
+
+		}
+
+	}
+
+	cout << endl;
+
+	return 0;
+
+}
+------------------------------------------------------
+Problem1224:
+#include<iostream>
+
+#include<string.h>
+
+#include<string>
+
+using namespace std;
+
+int judge(string s1, string s2)
+
+{
+
+	int p = 0;
+
+	for (int i = 0; i < s2.size() && p < s1.size(); i++)
+
+	{
+
+		if (s1[p] == s2[i])
+
+			p++;
+
+	}
+
+	if (p == s1.size())
+
+		return 1;
+
+	else
+
+		return 0;
+
+}
+
+int main()
+
+{
+
+	string s1, s2;
+
+	getline(cin, s1);
+
+	getline(cin, s2);
+
+	if (judge(s2, s1))
+
+	{
+
+		cout << "yes" << endl;
+
+	}
+
+	else
+
+	{
+
+		cout << "no" << endl;
+
+	}
+
+	return 0;
+
+}
+------------------------------------------------------
+Problem1225:
+#include<iostream>
+
+using namespace std;
+
+int main()
+
+{
+
+	int i, j, k, m, n, r;
+
+	int P[105][25];
+
+	int Q[25][25];
+
+	int res[105][25] = { {0} };
+
+	int ans[105][25] = { {0} };
+
+	cin >> m >> n >> r;
+
+	for (i = 0; i < m; i++)
+
+	{
+
+		for (j = 0; j < n; j++)
+
+		{
+
+			cin >> P[i][j];
+
+		}
+
+	}
+
+	for (i = 0; i < n; i++)
+
+	{
+
+		for (j = 0; j < r; j++)
+
+		{
+
+			cin >> Q[i][j];
+
+		}
+
+	}
+
+
+
+	for (i = 0; i < m; i++)
+
+	{
+
+		for (j = 0; j < n; j++)
+
+		{
+
+			for ( k = 0; k < r; k++)
+
+			{
+
+				res[i][k] += (P[i][j] * Q[j][k]); 
+
+			}
+
+		}
+
+	}
+
+	for (i = 0; i < m; i++)
+
+	{
+
+		for (k = 0; k < r; k++)
+
+		{
+
+			if (res[i][k]!=0)
+
+			{
+
+				ans[i][k] = 1;
+
+			}
+
+		}
+
+	}
+
+
+
+	for (i = 0; i < m; i++)
+
+	{
+
+		for (k = 0; k < r; k++)
+
+		{
+
+			cout << ans[i][k] << ' ';
+
+		}
+
+	cout << endl;
+
+	}
+
+	return 0;
+
+}
+------------------------------------------------------
+Problem1226:
+#include<iostream>
+
+using namespace std;
+
+int main()
+
+{
+
+	int a[105][105];
+
+	int res[105][105];
+
+	int n, i, j, k;
+
+	cin >> n;
+
+	for (i = 0; i < n; i++)
+
+	{
+
+		for (j = 0; j < n; j++)
+
+		{
+
+			cin >> a[i][j];
+
+		}
+
+	}
+
+	for (i = 0; i < n; i++)
+
+	{
+
+		for (j = 0; j < n; j++)
+
+		{
+
+			for (k = 0; k < n; k++)
+
+			{
+
+				res[i][j] = res[i][j] + a[i][k] * a[k][j];
+
+			}
+
+		}
+
+	}
+
+	for (i = 0; i < n; i++)
+
+	{
+
+		for (j = 0; j < n; j++)
+
+		{
+
+			if (a[i][j] == 0)
+
+			{
+
+				if (res[i][j] != 0)
+
+				{
+
+					cout << "no" << endl;
+
+					return 0;
+
+				}
+
+			}
+
+		}
+
+	}
+
+	cout << "yes" << endl;
+
+	return 0;
+
+}
+------------------------------------------------------
+Problem1227:
+#include<iostream>
+
+using namespace std;
+
+int main()
+
+{
+
+	int mtx[105][105];
+
+	int n;
+
+	cin >> n;
+
+	for (int i = 0; i < n; i++)
+
+	{
+
+		for (int j = 0; j < n; j++)
+
+		{
+
+			cin >> mtx[i][j];
+
+		}
+
+	}
+
+	int flag1, flag2;
+
+	int sum1, sum2;
+
+	for (int i = 0; i < n; i++)
+
+	{
+
+		sum1 = 0;
+
+		flag1 = 1;
+
+		for (int j = 0; j < n; j++)
+
+		{
+
+			if (mtx[i][j] == 1)
+
+			{
+
+				sum1++;
+
+			}
+
+		}
+
+		if (sum1 != 1)
+
+		{
+
+			flag1 = 0;
+
+			break;
+
+		}
+
+	}
+
+	for (int i = 0; i < n; i++)
+
+	{
+
+		sum2 = 0;
+
+		flag2 = 1;
+
+		for (int j = 0; j < n; j++)
+
+		{
+
+			if (mtx[j][i] == 1)
+
+			{
+
+				sum2++;
+
+			}
+
+		}
+
+		if (sum2 != 1)
+
+		{
+
+			flag2 = 0;
+
+			break;
+
+		}
+
+	}
+
+	if (flag1&&flag2)
+
+	{
+
+		cout << "yes" << endl;
+
+	}
+
+	else
+
+	{
+
+		cout << "no" << endl;
+
+	}
+
+}
+------------------------------------------------------
+Problem1228:
+#include<iostream>
+
+using namespace std;
+
+int main()
+
+{
+
+	int a[105][105];
+
+	int n;
+
+	cin >> n;
+
+	int flag1 = 1;
+
+	int flag2 = 1;
+
+	for (int i = 0; i < n; i++)
+
+	{
+
+		for (int j = 0; j < n; j++)
+
+		{
+
+			cin >> a[i][j];
+
+		}
+
+	}
+
+	for (int i = 0; i < n; i++)
+
+	{
+
+		if (a[i][i] == 0)
+
+		{
+
+			flag2 = 0;
+
+			break;
+
+		}
+
+	}
+
+	for (int i = 0; i < n; i++)
+
+	{
+
+		for (int j = 0; j < n; j++)
+
+		{
+
+			if (a[i][j] == 1)
+
+			{
+
+				if (a[j][i] == 0)
+
+				{
+
+					flag1 = 0;
+
+					break;
+
+				}
+
+				else
+
+				{
+
+					flag1 = 1;
+
+				}
+
+			}
+
+		}
+
+	}
+
+	if (flag1&&flag2)
+
+		cout << "yes" << endl;
+
+	else
+
+		cout << "no" << endl;
+
+}
+
+
+------------------------------------------------------
 Problem1233:
 #include<stdio.h>
 
@@ -10382,67 +10978,6 @@ int main()
 
 }
 ------------------------------------------------------
-Problem1554:
-#include<iostream>
-
-#include<iomanip>
-
-using namespace std;
-
-int main()
-
-{
-
-	int n;
-
-	double speed[200] = { 0 };
-
-	
-
-	while (cin >> n&&n!= EOF)
-
-	{
-
-		for (int i = 0; i < n; i++)
-
-		{
-
-			double m = 0, t = 0;
-
-			cin >> m >> t;
-
-			speed[i] = m / t;
-
-		}
-
-		double max = speed[0];
-
-		for (int i = 0; i < n; i++)
-
-		{
-
-			if (speed[i] > max)
-
-			{
-
-				max = speed[i];
-
-			}
-
-		}
-
-		cout <<fixed <<setprecision(2)<< max << endl;
-
-		max = 0;
-
-		speed[200] = { 0 };
-
-	}
-
-	return 0;
-
-}
-------------------------------------------------------
 Problem1542:
 #include<stdio.h>
 
@@ -10503,6 +11038,67 @@ int main()
 			}
 
 		}
+
+	}
+
+	return 0;
+
+}
+------------------------------------------------------
+Problem1554:
+#include<iostream>
+
+#include<iomanip>
+
+using namespace std;
+
+int main()
+
+{
+
+	int n;
+
+	double speed[200] = { 0 };
+
+	
+
+	while (cin >> n&&n!= EOF)
+
+	{
+
+		for (int i = 0; i < n; i++)
+
+		{
+
+			double m = 0, t = 0;
+
+			cin >> m >> t;
+
+			speed[i] = m / t;
+
+		}
+
+		double max = speed[0];
+
+		for (int i = 0; i < n; i++)
+
+		{
+
+			if (speed[i] > max)
+
+			{
+
+				max = speed[i];
+
+			}
+
+		}
+
+		cout <<fixed <<setprecision(2)<< max << endl;
+
+		max = 0;
+
+		speed[200] = { 0 };
 
 	}
 
