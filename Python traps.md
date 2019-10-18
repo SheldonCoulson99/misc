@@ -8,6 +8,7 @@ Python IDE 我现在也只看pycharm了。IDE环境做的真的比VS好很多。
 问题不大。
 
 PROGRAM:
+
 CLASS类。
 今天被坑惨了。
 python类的继承与c++相差甚远。
